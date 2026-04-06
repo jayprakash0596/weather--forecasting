@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyCast - Professional Weather Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="weather-sunny">
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="app-container">
+
+        <header class="header">
+            <div class="logo">SkyCast</div>
+            <div class="search-bar">
+                <i class="ri-search-line search-icon"></i>
+                <input type="text" id="cityInput" placeholder="Search city or zip code...">
+                <button id="searchBtn">Search</button>
+            </div>
+            <div class="header-actions">
+                <button id="locationBtn" title="Use Current Location">
+                    <i class="ri-map-pin-user-fill"></i>
+                </button>
+                <div class="units-toggle">
+                    <span class="active" id="unitC">°C</span>
+                    <span>|</span>
+                    <span id="unitF">°F</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <section class="current-section">
+                <div class="main-card fade-in">
+                    <div class="location-info">
+                        <h1 id="locationName">Loading...</h1>
+                        <p id="currentDate"></p>
+                    </div>
+
+                    <div class="weather-primary">
+                        <img src="" alt="Weather Icon" id="weatherIcon" class="weather-icon-large">
+                        <div class="temp-container">
+                            <span class="main-temp" id="mainTemp">--</span>
+                            <span class="temp-unit">°C</span>
+                        </div>
+                        <p class="weather-desc" id="weatherDesc">Fetching data...</p>
+                    </div>
+
+                    <div class="feels-like">
+                        Feels like <span id="feelsLike">--</span>°
+                    </div>
+                </div>
+            </section>
+
+            <section class="details-section">
+
+                <div class="highlights-grid">
+                    <div class="info-card fade-in">
+                        <div class="card-icon"><i class="ri-droplet-fill"></i></div>
+                        <div class="card-data">
+                            <h3>Humidity</h3>
+                            <p><span id="humidityVal">--</span>%</p>
+                        </div>
+                    </div>
+                    <div class="info-card fade-in" style="animation-delay: 0.1s;">
+                        <div class="card-icon"><i class="ri-windy-fill"></i></div>
+                        <div class="card-data">
+                            <h3>Wind Speed</h3>
+                            <p><span id="windVal">--</span> <span class="wind-unit">m/s</span></p>
+                        </div>
+                    </div>
+                    <div class="info-card fade-in" id="aqiCard" style="animation-delay: 0.2s;">
+                        <div class="card-icon"><i class="ri-temp-hot-line"></i></div>
+                        <div class="card-data">
+                            <h3>Air Quality (AQI)</h3>
+                            <p id="aqiVal">--</p>
+                            <span class="aqi-desc" id="aqiDesc">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast-container fade-in" style="animation-delay: 0.3s;">
+                    <h2>5-Day Forecast</h2>
+                    <div class="forecast-scroll" id="forecastScroll">
+                    </div>
+                </div>
+
+                <div class="map-container fade-in" style="animation-delay: 0.4s;">
+                    <h2>Select Location on Map</h2>
+                    <div id="map"></div>
+                </div>
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <div class="graph-container glass-panel fade-in" style="margin-bottom: 20px; padding: 20px;">
+                    <h2 style="margin-bottom: 15px;">Next 5 Hours Prediction</h2>
+                    <div style="height: 200px;">
+                        <canvas id="hourlyChart"></canvas>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Powered by OpenWeatherMap API & Leaflet.js</p>
+    </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
